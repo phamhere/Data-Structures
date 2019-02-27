@@ -7,7 +7,11 @@ class Heap:
         self._bubble_up(len(self.storage) - 1)
 
     def delete(self):
-        deleted = self.storage.pop(0)
+        deleted = self.storage[0]
+        # changing the last element to the first element
+        self.storage[0] = self.storage[len(self.storage) - 1]
+        # getting rid of the last element in self.storage
+        self.storage.pop()
         self._sift_down(0)
         return deleted
 
@@ -44,4 +48,3 @@ class Heap:
                 self.storage[index], self.storage[biggest_child] = self.storage[biggest_child], self.storage[index]
             # changes index to be child for next iteration
             index = biggest_child
-
